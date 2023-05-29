@@ -12,13 +12,18 @@ import 'package:tik_shok/view/screens/home_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
+  RxString imagePath = "".obs;
   //selected image
   File? proImg;
   void pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-    final img = File(image.path);
-    this.proImg = img;
+    if (image != null) {
+      final img = File(image.path);
+      imagePath.value = image.path.toString();
+      proImg = img;
+    } else {
+      return null;
+    }
   }
 
 // User State Persistence

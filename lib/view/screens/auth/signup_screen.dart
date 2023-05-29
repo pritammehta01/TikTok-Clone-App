@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tik_shok/constants.dart';
@@ -20,6 +22,7 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController _userNameController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final AuthController _authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,6 @@ class SignUpScreen extends StatelessWidget {
           child: Form(
             key: _formKey,
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const GlitchEffect(
                   child: Text(
@@ -41,36 +43,44 @@ class SignUpScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  onTap: () {
-                    AuthController.instance.pickImage();
-                  },
-                  child: Stack(
-                    children: [
-                      const CircleAvatar(
-                        radius: 70,
-                        child: Icon(
-                          Icons.account_circle,
-                          //color: Colors.grey,
-                          size: 150,
-                        ),
-                      ),
-                      Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(40)),
-                            child: const Icon(
-                              Icons.camera_alt,
-                              size: 40,
-                              color: Colors.black,
-                            ),
-                          ))
-                    ],
-                  ),
-                ),
+                Obx(() {
+                  return InkWell(
+                    onTap: () {
+                      _authController.pickImage();
+                    },
+                    child: Stack(
+                      children: [
+                        _authController.imagePath.isNotEmpty
+                            ? CircleAvatar(
+                                radius: 70,
+                                backgroundImage: FileImage(
+                                    File(_authController.imagePath.toString())),
+                              )
+                            : const CircleAvatar(
+                                radius: 70,
+                                child: Icon(
+                                  Icons.account_circle,
+                                  //color: Colors.grey,
+                                  size: 150,
+                                ),
+                              ),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(40)),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 40,
+                                color: Colors.black,
+                              ),
+                            ))
+                      ],
+                    ),
+                  );
+                }),
                 const SizedBox(
                   height: 25,
                 ),
@@ -161,11 +171,11 @@ class SignUpScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20))),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          AuthController.instance.signUp(
+                          _authController.signUp(
                               _userNameController.text.toString(),
                               _emailCntroller.text.toString(),
                               _setPasswordCntroller.text.toString(),
-                              AuthController.instance.proImg);
+                              _authController.proImg);
                           Get.offAll(() => HomeScreen());
                         }
                       },
