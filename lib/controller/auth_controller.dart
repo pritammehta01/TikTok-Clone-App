@@ -42,7 +42,7 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAll(() => SignUpScreen());
     } else {
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => const HomeScreen());
     }
   }
 
@@ -96,7 +96,7 @@ class AuthController extends GetxController {
   }) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
-        UserCredential credential = await FirebaseAuth.instance
+        await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
         Get.snackbar("Login", "Successfully");
       } else {

@@ -12,7 +12,7 @@ import 'package:video_compress/video_compress.dart';
 class VideoUploadController extends GetxController {
   static VideoUploadController instance = Get.find();
 
-  var uuid = Uuid();
+  var uuid = const Uuid();
 
   //genrating thumbnail
   Future<File> _getThumb(String videoPath) async {

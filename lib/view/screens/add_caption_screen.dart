@@ -7,6 +7,7 @@ import 'package:tik_shok/controller/upload_video_controller.dart';
 import 'package:tik_shok/view/widgets/text_input.dart';
 import 'package:video_player/video_player.dart';
 
+// ignore: must_be_immutable
 class AddCaptionScreen extends StatefulWidget {
   File videoFile;
   String videoPath;

@@ -6,7 +6,7 @@ class ProfileController extends GetxController {
   final Rx<Map<String, dynamic>> _user = Rx<Map<String, dynamic>>({});
   Map<String, dynamic> get user => _user.value;
 
-  Rx<String> _uid = "".obs;
+  final Rx<String> _uid = "".obs;
 
   updateUserId(String uid) {
     _uid.value = uid;
@@ -30,7 +30,7 @@ class ProfileController extends GetxController {
         .doc(_uid.value)
         .get();
 
-    final userData = userDoc.data() as dynamic;
+    // final userData = userDoc.data() as dynamic;
 
     String name = userDoc['name'];
     String profilePic = userDoc['profilePic'];

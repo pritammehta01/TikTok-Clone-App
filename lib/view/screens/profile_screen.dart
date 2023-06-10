@@ -3,11 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:glitcheffect/glitcheffect.dart';
 import 'package:tik_shok/controller/auth_controller.dart';
 import 'package:tik_shok/controller/profile_controller.dart';
-import 'package:tik_shok/view/screens/display_video_screen.dart';
 
+// ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
   String uid;
   ProfileScreen({

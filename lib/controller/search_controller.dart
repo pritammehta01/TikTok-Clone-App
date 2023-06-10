@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:tik_shok/model/user_model.dart';
 
-class SearchController extends GetxController {
+class Searchcontroller extends GetxController {
   final Rx<List<MyUser>> _searchUsers = Rx<List<MyUser>>([]);
   List<MyUser> get searchUsers => _searchUsers.value;
   searchUser(String query) async {

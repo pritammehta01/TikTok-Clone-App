@@ -4,13 +4,14 @@ import 'package:tik_shok/constants.dart';
 import 'package:tik_shok/controller/auth_controller.dart';
 import 'package:tik_shok/view/screens/auth/signup_screen.dart';
 import 'package:tik_shok/view/screens/home_screen.dart';
-import 'package:tik_shok/view/widgets/text_input.dart';
 import 'package:glitcheffect/glitcheffect.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController _emailCntroller = TextEditingController();
   final TextEditingController _passwordCntroller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                         AuthController.instance.login(
                             email: _emailCntroller.text,
                             password: _passwordCntroller.text);
-                        Get.offAll(() => HomeScreen());
+                        Get.offAll(() => const HomeScreen());
                       }
                     },
                     child: const Text("Login"))),

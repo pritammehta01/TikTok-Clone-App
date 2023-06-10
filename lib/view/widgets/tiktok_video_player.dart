@@ -5,7 +5,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 class TikTokVideoPlayer extends StatefulWidget {
   final String videoUrl;
 
-  TikTokVideoPlayer({
+  const TikTokVideoPlayer({
     Key? key,
     required this.videoUrl,
   }) : super(key: key);

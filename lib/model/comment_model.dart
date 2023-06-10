@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Comment {
   String username;
   String comment;
+  // ignore: prefer_typing_uninitialized_variables
   final datePub;
   List likes;
   String profilePic;

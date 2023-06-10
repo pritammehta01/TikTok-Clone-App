@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tik_shok/controller/search_controller.dart';
-import 'package:tik_shok/model/user_model.dart';
 import 'package:tik_shok/view/screens/profile_screen.dart';
+import '../../controller/search_controller.dart';
+import '../../model/user_model.dart';
 
+// ignore: must_be_immutable
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
   TextEditingController searchQuery = TextEditingController();
-  final SearchController searchController = Get.put(SearchController());
+  final Searchcontroller searchController = Get.put(Searchcontroller());
 
   @override
   Widget build(BuildContext context) {

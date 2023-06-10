@@ -12,8 +12,8 @@ const borderColor = Colors.grey;
 final pageIndex = [
   DisplayVideoScreen(),
   SearchScreen(),
-  AddVideoScreen(),
-  Text(" comming Soon in New Update"),
+  const AddVideoScreen(),
+  const Text(" comming Soon in New Update"),
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),

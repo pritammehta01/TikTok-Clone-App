@@ -176,7 +176,7 @@ class SignUpScreen extends StatelessWidget {
                               _emailCntroller.text.toString(),
                               _setPasswordCntroller.text.toString(),
                               _authController.proImg);
-                          Get.offAll(() => HomeScreen());
+                          Get.offAll(() => const HomeScreen());
                         }
                       },
                       child: const Text("Sign Up")),
